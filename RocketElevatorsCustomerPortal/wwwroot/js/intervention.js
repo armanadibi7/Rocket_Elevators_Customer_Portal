@@ -2,13 +2,13 @@
 async function selected_building(preload, battery) {
 
 
-   
-    //document.getElementById('step4').style.visibility = 'hidden';
-    document.getElementById('step5').style.visibility = 'hidden';
-    document.getElementById('step6').style.visibility = 'hidden';
-    document.getElementById('step7').style.visibility = 'hidden';
-    document.getElementById('step8').style.visibility = 'hidden';
+
+
     document.getElementById('step3').style.visibility = 'visible';
+    document.getElementById('step4').style.visibility = 'visible';
+    document.getElementById('step5').style.visibility = 'visible';
+    document.getElementById('step7').style.visibility = 'visible';
+    document.getElementById('step8').style.visibility = 'visible';
     function removeOptions(selectElement) {
         var i, L = selectElement.options.length - 1;
         for (i = L; i >= 0; i--) {
@@ -60,10 +60,10 @@ async function selected_building(preload, battery) {
 
 async function selected_battery(preload,column) {
     document.getElementById('step5').style.visibility = 'hidden';
-    document.getElementById('step6').style.visibility = 'hidden';
     document.getElementById('step7').style.visibility = 'hidden';
     document.getElementById('step8').style.visibility = 'hidden';
     document.getElementById('step4').style.visibility = 'visible';
+
     function removeOptions(selectElement) {
         var i, L = selectElement.options.length - 1;
         for (i = L; i >= 0; i--) {
@@ -82,6 +82,7 @@ async function selected_battery(preload,column) {
         value = preload;
     }
     document.getElementById('step4').style.visibility = 'visible';
+    
     await   $.ajax({
         type: 'GET',
         url: '/Intervention/getColumn/' + value,
@@ -110,14 +111,26 @@ async function selected_battery(preload,column) {
                 x.appendChild(t);
                 document.getElementById("selectedColumn").appendChild(x);
             });
+            
         }
     });
+    if (typeof preload != 'undefined') {
+        document.getElementById('step5').style.visibility = 'visible';
+        document.getElementById('step7').style.visibility = 'visible';
+        document.getElementById('step8').style.visibility = 'visible';
+        document.getElementById('step4').style.visibility = 'visible';
 
+        await selected_column(0, 0);
+
+        await selected_elevator(0);
+
+    }
     
 }
 async function selected_column(preload,elevator) {
 
     document.getElementById('step5').style.visibility = 'visible';
+
     function removeOptions(selectElement) {
         var i, L = selectElement.options.length - 1;
         for (i = L; i >= 0; i--) {
@@ -174,49 +187,8 @@ async function selected_column(preload,elevator) {
 
 }
 async function selected_elevator(preload) {
-    document.getElementById('step6').style.visibility = 'visible';
     document.getElementById('step7').style.visibility = 'visible';
     document.getElementById('step8').style.visibility = 'visible';
-    document.getElementById('step6').style.visibility = 'visible';
-
-    function removeOptions(selectElement) {
-        var i, L = selectElement.options.length - 1;
-        for (i = L; i >= 0; i--) {
-            selectElement.remove(i);
-        }
-    }
-
-
-    removeOptions(document.getElementById('employeeList'));
-
-
-    await $.ajax({
-        type: 'GET',
-        url: '/Intervention/getEmployee',
-        success: function (data) {
-
-            console.log(data);
-            var x = document.createElement("OPTION");
-            x.setAttribute("value", "Select");
-            var t = document.createTextNode("--- Please Select ---");
-            x.appendChild(t);
-            document.getElementById("employeeList").appendChild(x);
-            var x = document.createElement("OPTION");
-            x.setAttribute("value", "null");
-            var t = document.createTextNode("NONE");
-            x.appendChild(t);
-            document.getElementById("employeeList").appendChild(x);
-
-            $.each(data, function (i, j) {
-
-                var x = document.createElement("OPTION");
-                x.setAttribute("value", j.id);
-                var t = document.createTextNode("ID : " + j.id + " - " + j.lastName);
-                x.appendChild(t);
-                document.getElementById("employeeList").appendChild(x);
-            });
-        }
-    });
 
 
 }
@@ -251,10 +223,8 @@ async function init() {
             document.getElementById('step3').style.visibility = 'visible';
             document.getElementById('step4').style.visibility = 'visible';
             document.getElementById('step5').style.visibility = 'visible';
-            document.getElementById('step6').style.visibility = 'visible';
             document.getElementById('step7').style.visibility = 'visible';
             document.getElementById('step8').style.visibility = 'visible';
-            document.getElementById('step6').style.visibility = 'visible';
             await selected_building(buildingValue, batteryValue);
 
             await selected_battery(batteryValue, columnValue);
