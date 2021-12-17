@@ -51,20 +51,23 @@
 
 .basic,
 .basic .title .fa {
-    background: linear-gradient(-45deg, #f403d1, #64b5f6);
+    background: rgb(242,184,143);
+    background: linear-gradient(0deg, rgba(242,184,143,1) 0%, rgba(163,17,76,1) 85%);
 }
 
 .standard,
 .standard .title .fa {
     width: 400px;
     margin-left: -10px;
-    background: linear-gradient(-45deg, #ffec61, #f321d7);
+    background: rgb(195,136,34);
+    background: linear-gradient(0deg, rgba(195,136,34,1) 8%, rgba(149,45,253,1) 97%);
 }
 
 .premium,
 .premium .title .fa {
     margin-left: 20px;
-    background: linear-gradient(-45deg, #24ff72, #9a4eff);
+    background: rgb(34,195,169);
+    background: linear-gradient(0deg, rgba(34,195,169,1) 29%, rgba(253,45,129,1) 97%);
 }
 
 .mycard::before {

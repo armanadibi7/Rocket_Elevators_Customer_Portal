@@ -83,8 +83,12 @@
         var msg = dictionary(request);
         INDEX++;
         var str = "";
+       
         str += "<div id='cm-msg-" + INDEX + "' class=\"chat-msg " + type + "\">";
+      
         str += "          <div class=\"cm-msg-text\">";
+
+        str += "        <i class=\"fas fa-comment-alt\"></i>  &nbsp;";
         str += msg;
         str += "          <\/div>";
         str += "        <\/div>";
@@ -99,8 +103,11 @@
         INDEX++;
         var str = "";
         str += "<div id='cm-msg-" + INDEX + "' class=\"chat-msg " + type + "\">";
+
         str += "          <div class=\"cm-msg-text\">";
         str += msg;
+
+        str += "   &nbsp;       <i class=\"fas fa-comment-alt\"></i>";
         str += "          <\/div>";
         str += "        <\/div>";
         $(".chat-logs").append(str);
