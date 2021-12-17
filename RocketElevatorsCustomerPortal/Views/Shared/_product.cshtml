@@ -30,7 +30,7 @@
                 <th><h1>Phone Number</h1></th>
                 <th><h1>Tech Name</h1></th>
                 <th><h1>Tech Email</h1></th>
-                <th><h1>Intervention</h1></th>
+               
             </tr>
         </thead>
         <tbody>
@@ -43,10 +43,7 @@
                     <td>@building.AdminPhoneNumer</td>
                     <td>@building.TechFullName</td>
                     <td>@building.TechEmail</td>
-                    <td>
-                        @Html.ActionLink("Request Intervetnion", "Index", "Intervention", new { product = "building", id = @building.Id }, null)
-
-                    </td>
+                   
                 </tr>
             }
 

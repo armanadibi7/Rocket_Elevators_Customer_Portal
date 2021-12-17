@@ -52,6 +52,7 @@ namespace RocketElevatorsCustomerPortal.Controllers
                     string customerId = await getCustomer(user.Email);
                     ViewBag.building = await getBuilding(customerId);
                     TempData["preload"] = "none";
+                    TempData["buildingId"] = "0";
                 }
                 return View();
 
