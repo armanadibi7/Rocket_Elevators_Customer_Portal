@@ -59,10 +59,12 @@ async function selected_building(preload, battery) {
 }
 
 async function selected_battery(preload,column) {
-    document.getElementById('step5').style.visibility = 'hidden';
-    document.getElementById('step7').style.visibility = 'hidden';
-    document.getElementById('step8').style.visibility = 'hidden';
+
+    document.getElementById('step3').style.visibility = 'visible';
     document.getElementById('step4').style.visibility = 'visible';
+    document.getElementById('step5').style.visibility = 'visible';
+    document.getElementById('step7').style.visibility = 'visible';
+    document.getElementById('step8').style.visibility = 'visible';
 
     function removeOptions(selectElement) {
         var i, L = selectElement.options.length - 1;
@@ -115,10 +117,12 @@ async function selected_battery(preload,column) {
         }
     });
     if (typeof preload != 'undefined') {
+
+        document.getElementById('step3').style.visibility = 'visible';
+        document.getElementById('step4').style.visibility = 'visible';
         document.getElementById('step5').style.visibility = 'visible';
         document.getElementById('step7').style.visibility = 'visible';
         document.getElementById('step8').style.visibility = 'visible';
-        document.getElementById('step4').style.visibility = 'visible';
 
         await selected_column(0, 0);
 
